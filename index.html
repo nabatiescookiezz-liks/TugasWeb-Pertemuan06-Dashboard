@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#f6eaff">
+		<title>QuizzApp - Kuis Pemrograman</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<header class="topbar">
+			<a class="brand" href="#home" aria-label="QuizzApp, halaman utama">
+				<span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+				<span>QuizzApp</span>
+			</a>
+			<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Aktifkan mode malam" title="Aktifkan mode malam">
+				<span id="theme-icon" aria-hidden="true">☾</span>
+			</button>
+		</header>
+
+		<main id="app" class="layout" data-view="home">
+			<section class="quiz-panel" aria-labelledby="page-title">
+				<section class="screen screen-home" id="home" data-screen="home">
+					<h2 id="page-title">Kuis Pemrograman</h2>
+					<p class="intro-copy">Pilih bahasa pemrograman, Abistu jawab soal yang sesuai dengan pilihanmu🫰🫶.</p>
+					<p class="quiz-count">8 soal · Pilih satu jawaban di setiap soal</p>
+					<form class="player-form" id="player-form">
+						<div class="form-field">
+							<label for="player-name">Nama</label>
+							<input id="player-name" name="player-name" type="text" maxlength="30" autocomplete="name" placeholder="Masukkan nama" required>
+						</div>
+						<div class="form-field">
+							<label for="programming-language">Bahasa pemrograman</label>
+							<select id="programming-language" name="programming-language" required>
+								<option value="" disabled selected>Pilih bahasa pemrograman</option>
+								<option value="JavaScript">JavaScript</option>
+								<option value="Python">Python</option>
+								<option value="Java">Java</option>
+								<option value="C++">C++</option>
+								<option value="PHP">PHP</option>
+								<option value="Lainnya">Lainnya</option>
+							</select>
+						</div>
+						<div class="high-score-card" aria-live="polite">
+							<div><strong class="score-label">Skor tertinggi</strong><p class="score-note">Rekor terbaikmu sejauh ini</p></div>
+							<strong class="score-value" id="high-score">0<span> / 8</span></strong>
+						</div>
+						<button class="primary-button" type="submit">Mulai kuis <span aria-hidden="true">→</span></button>
+					</form>
+				</section>
+
+				<section class="screen screen-quiz" data-screen="quiz" hidden aria-live="polite">
+					<div class="quiz-topline"><span class="player-info" id="player-info"></span><span class="question-counter" id="question-counter">01 / 08</span></div>
+					<div class="progress-track" role="progressbar" aria-label="Progres kuis" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span id="progress-fill"></span></div>
+					<div class="question-area">
+						<p class="question-tag" id="question-category">Dasar</p>
+						<h2 id="question-text"></h2>
+						<div class="answer-list" id="answer-list" aria-label="Pilihan jawaban"></div>
+						<p class="answer-feedback" id="answer-feedback" aria-live="polite"></p>
+					</div>
+					<div class="quiz-footer"><span>Skor: <strong id="current-score">0</strong></span><button class="primary-button" type="button" data-action="quit">Keluar dari kuis</button></div>
+				</section>
+
+				<section class="screen screen-result" data-screen="result" hidden>
+					<p class="result-kicker" id="result-kicker">Hasil akhir</p>
+					<h2 class="result-title" id="result-title">Kerja bagus.</h2>
+					<div class="result-summary" aria-label="Ringkasan hasil kuis">
+						<div class="summary-card summary-correct"><span class="summary-emoji" aria-hidden="true">🌟</span><span class="summary-label">Benar</span><strong class="summary-value" id="correct-count">0</strong></div>
+						<div class="summary-card summary-wrong"><span class="summary-emoji" aria-hidden="true">🙈</span><span class="summary-label">Salah</span><strong class="summary-value" id="wrong-count">0</strong></div>
+						<div class="summary-card summary-score"><span class="summary-emoji" aria-hidden="true">🏆</span><span class="summary-label">Skor</span><strong class="summary-value"><span id="final-score">0</span> / 8</strong></div>
+					</div>
+					<p class="result-copy" id="result-copy"></p>
+					<div class="result-record"><span>Skor tertinggi</span><strong id="result-high-score">0 / 8</strong></div>
+					<div class="result-actions">
+						<button class="primary-button" type="button" data-action="restart">Main lagi <span aria-hidden="true">↻</span></button>
+						<button class="secondary-button" type="button" data-action="home">Kembali ke halaman utama</button>
+					</div>
+				</section>
+			</section>
+		</main>
+	</body>
+</html>
